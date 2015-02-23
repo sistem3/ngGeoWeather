@@ -30,6 +30,8 @@
   ],
   "license": "MIT",
   "ignore": [
+    ".gitignore",
+    "Gruntfile.js",
     "*.json",
     "*.md",
     "/src/*",
