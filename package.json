@@ -1,0 +1,8 @@
+{
+  "name":"ngGeoWeather",
+  "version": "0.0.2",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-html2js": "^0.2.7"
+  }
+}
