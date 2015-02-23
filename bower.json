@@ -18,7 +18,11 @@
     "Ben Burton <sistematic3@yahoo.co.uk>"
   ],
   "description": "Angular JS for displaying local weather",
-  "main": "geoWeatherDirective.directive.js",
+  "main": [
+    "geoWeatherDirective.directive.js",
+    "geoWeatherDirective.css",
+    "./fonts/*"
+  ],
   "keywords": [
     "angularJS",
     "weather"
