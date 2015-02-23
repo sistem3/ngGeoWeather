@@ -3,7 +3,7 @@
 angular.module('sistem3.ng-geo-weather')
   .directive('geoWeatherDirective', ['$http', '$filter', function ($http, $filter) {
     return {
-      templateUrl: 'app/geoWeatherDirective/geoWeatherDirective.html',
+      templateUrl: '/geoWeatherDirective.html',
       restrict: 'EA',
       link: function ($scope, element, attrs) {
         //console.log('Add geo Weather Directive');
