@@ -32,7 +32,7 @@
   "ignore": [
     "*.json",
     "*.md",
-    "./src/*",
-    "./node_modules/*"
+    "/src/*",
+    "/node_modules/*"
   ]
 }
