@@ -27,5 +27,9 @@
     "angularJS",
     "weather"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "ignore": [
+    "*.json",
+    "*.md"
+  ]
 }
