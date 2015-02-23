@@ -12,7 +12,7 @@
     "angular-cookies": ">=1.2.*",
     "angular-sanitize": ">=1.2.*",
     "font-awesome": ">=4.1.0",
-    "lodash": "~2.4.1",
+    "lodash": "~2.4.1"
   },
   "authors": [
     "Ben Burton <sistematic3@yahoo.co.uk>"
