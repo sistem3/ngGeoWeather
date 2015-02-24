@@ -14,7 +14,6 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
         $scope.weather.todaysDate = new Date();
         $scope.weather.timeNow = $filter('date')($scope.weather.todaysDate, 'shortTime');
 
-        //console.log(attrs);
         if (attrs.forecastHide === "true") {
           $scope.weather.foreCastHide = true;
         }
@@ -23,7 +22,6 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
         if ("geolocation" in navigator) {
           //console.log("GeoLocation Available");
           navigator.geolocation.getCurrentPosition(function(position) {
-            //console.log(position.coords.latitude);
             getLocation(position);
           });
         } else {
@@ -36,7 +34,7 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
             //console.log(data);
             $scope.weather.location = data.results[0].address_components[3].long_name;
             getWeather($scope.weather.location);
-            if (attrs.forecastHide === "true") {
+            if (!attrs.forecastHide || attrs.forecastHide === "false") {
               getForecast($scope.weather.location);
             }
           });
@@ -47,13 +45,9 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
           $http.get('http://api.openweathermap.org/data/2.5/weather?q=' + locationName + '&units=metric').success(function(data) {
             console.log(data);
             $scope.weather.today = data;
+            $scope.weather.today.icon = getWeatherIcon(data.weather[0].description);
             $scope.weather.loading = false;
-            /*$scope.weather.sunrise = data.query.results.channel.astronomy.sunrise;
-            $scope.weather.sunset = data.query.results.channel.astronomy.sunset;
-            $scope.weather.atmosphere = data.query.results.channel.atmosphere;
-            $scope.weather.wind = data.query.results.channel.wind;
-            checkDayNight($scope.weather.timeNow, $scope.weather.sunrise, $scope.weather.sunset);
-            $scope.weather.loading = false;*/
+            //checkDayNight($scope.weather.timeNow, $scope.weather.sunrise, $scope.weather.sunset);
           });
         };
 
@@ -61,8 +55,8 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
           $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=' + locationName + '&units=metric').success(function(data) {
             console.log(data);
             $scope.weather.forecast = [];
-            angular.forEach(data.query.results.channel.item.forecast, function(key, value) {
-              key.icon = getWeatherIcon(key.text);
+            angular.forEach(data.list, function(key, value) {
+              key.icon = getWeatherIcon(key.weather[0].description);
               this.push(key);
             }, $scope.weather.forecast);
           });
@@ -93,56 +87,56 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
         var getWeatherIcon = function(weather) {
           //console.log(weather);
           switch(weather) {
-            case 'Cloudy':
-            case 'Mostly Cloudy':
-              return '<i class="wi wi-cloudy"></i>';
+            case 'thunderstorm with light rain':
+            case 'thunderstorm with rain':
+            case 'thunderstorm with heavy rain':
+              return '<i class="wi wi-storm-showers"></i>';
               break;
-            case 'Partly Cloudy':
-              return '<i class="wi wi-day-cloudy"></i>';
+            case 'light thunderstorm':
+            case 'thunderstorm with light drizzle':
+            case 'thunderstorm with drizzle':
+            case 'thunderstorm with heavy drizzle':
+              return '<i class="wi wi-day-storm-showers"></i>';
               break;
-            case 'Sunny':
-            case 'Mostly Sunny':
-            case 'Mostly Clear':
-              return '<i class="wi wi-day-sunny"></i>';
+            case 'thunderstorm':
+              return '<i class="wi wi-day-thunderstorm"></i>';
               break;
-            case 'Light Rain/Wind':
-              return '<i class="wi wi-day-rain-wind"></i>';
+            case 'heavy thunderstorm':
+            case 'ragged thunderstorm':
+              return '<i class="wi wi-thunderstorm"></i>';
               break;
-            case 'AM Clouds/PM Sun':
-              return '<i class="wi wi-day-cloudy"></i> | <i class="wi wi-night-alt-cloudy"></i>';
+            case 'light intensity drizzle':
+              return '<i class="wi wi-day-sprinkle"></i>';
               break;
-            case 'AM Showers':
-            case 'Rain Early':
-              return '<i class="wi wi-day-rain"></i>';
+            case 'drizzle':
+            case 'light intensity shower rain':
+              return '<i class="wi wi-sprinkle"></i>';
               break;
-            case 'PM Showers':
-              return '<i class="wi wi-night-showers"></i>';
-              break;
-            case 'PM Rain':
-              return '<i class="wi wi-night-rain"></i>';
-              break;
-            case 'Snow':
-            case 'Light Snow':
-              return '<i class="wi wi-day-snow"></i>';
-              break;
-            case 'Rain':
-              return '<i class="wi wi-rain"></i>';
-              break;
-            case 'Showers':
-            case 'Light Rain':
+            case 'heavy intensity drizzle':
+            case 'light intensity drizzle rain':
+            case 'drizzle rain':
+            case 'shower drizzle':
+            case 'shower rain and drizzle':
+            case 'heavy intensity drizzle rain':
+            case 'heavy shower rain and drizzle':
+            case 'shower rain':
+            case 'heavy intensity shower rain':
               return '<i class="wi wi-showers"></i>';
               break;
-            case 'PM Light Rain/Wind':
-              return '<i class="wi wi-night-rain-wind"></i>';
+            case 'light rain':
+            case 'moderate rain':
+            case 'ragged shower rain':
+              return '<i class="wi wi-rain-mix"></i>';
               break;
-            case 'AM Showers/Wind':
-              return '<i class="wi wi-day-rain-wind"></i>';
+            case 'heavy intensity rain':
+            case 'very heavy rain':
+              return '<i class="wi wi-rain"></i>';
               break;
-            case 'Clouds Early/Clearing Late':
-              return '<i class="wi wi-day-cloudy"></i> | <i class="wi wi-night-clear"></i>';
+            case 'extreme rain':
+              return '<i class="wi wi-rain-wind"></i>';
               break;
             default:
-              return '<i class="wi wi-day-sun"></i>'
+              return '<i class="wi wi-day-sunny"></i>'
               break;
           }
         };
