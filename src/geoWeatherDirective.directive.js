@@ -13,7 +13,7 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
         $scope.weather.error = false;
         $scope.weather.errorMessage = 'There seems to be a problem fetching your data';
         $scope.weather.background = 'defaultBg';
-        $scope.weather.apiBase = '';
+        $scope.weather.apiBase = 'http://api.openweathermap.org/data/2.5/';
         $scope.weather.todaysDate = new Date();
         $scope.weather.timeNow = $filter('date')($scope.weather.todaysDate, 'HH:mm');
         // Check for forecast hide attribute
