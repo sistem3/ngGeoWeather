@@ -10,7 +10,7 @@ module.exports = function (grunt) {
       },
       main: {
         src: ['src/**/*.tpl.html'],
-        dest: 'src/templates.js'
+        dest: 'src/geoWeatherDirectiveTemplate.js'
       },
     }
   });
