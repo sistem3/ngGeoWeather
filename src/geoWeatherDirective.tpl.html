@@ -9,6 +9,9 @@
             </div>
             <p ng-bind="weather.loadingMessage"></p>
         </div>
+        <div ng-if="weather.error">
+            <h3 ng-bind="weather.errorMessage"></h3>
+        </div>
         <div ng-if="!weather.loading" class="container geoWeather__content">
             <div class="col-md-12">
                 <h2><span ng-bind="weather.today.weather[0].main"></span> <span ng-bind-html="weather.today.icon"></span></h2>

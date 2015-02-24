@@ -10,8 +10,10 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
         $scope.weather = {};
         $scope.weather.loading = true;
         $scope.weather.loadingMessage = 'Loading your weather...';
+        $scope.weather.error = false;
+        $scope.weather.errorMessage = 'There seems to be a problem fetching your data';
         $scope.weather.background = 'defaultBg';
-        $scope.weather.apiBase = 'http://api.openweathermap.org/data/2.5/';
+        $scope.weather.apiBase = '';
         $scope.weather.todaysDate = new Date();
         $scope.weather.timeNow = $filter('date')($scope.weather.todaysDate, 'HH:mm');
         // Check for forecast hide attribute
@@ -30,36 +32,51 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
         // Get location from Google Maps
         var getLocation = function(position) {
           var apiKey = 'AIzaSyDI-MPoDrmVJnK2qAYtDZr9aR9pOzHCSiI';
-          $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&key=' + apiKey).success(function(data) {
-            //console.log(data);
-            $scope.weather.location = data.results[0].address_components[3].long_name;
-            getWeather($scope.weather.location);
-            if (!attrs.forecastHide || attrs.forecastHide === "false") {
-              getForecast($scope.weather.location);
-            }
-          });
+          $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&key=' + apiKey)
+            .success(function(data) {
+              //console.log(data);
+              $scope.weather.location = data.results[0].address_components[3].long_name;
+              getWeather($scope.weather.location);
+              if (!attrs.forecastHide || attrs.forecastHide === "false") {
+                getForecast($scope.weather.location);
+              }
+            })
+            .error(function(data) {
+              //console.log(data);
+              $scope.weather.error = true;
+            });
         };
         // Get Today's Weather from OpenWeather API
         var getWeather = function(locationName) {
           $scope.weather.loading = true;
-          $http.get($scope.weather.apiBase + 'weather?q=' + locationName + '&units=metric').success(function(data) {
-            console.log(data);
-            $scope.weather.today = data;
-            $scope.weather.today.icon = getWeatherIcon(data.weather[0].description);
-            $scope.weather.loading = false;
-            checkDayNight($scope.weather.timeNow, $scope.weather.today.sys.sunrise, $scope.weather.today.sys.sunset);
-          });
+          $http.get($scope.weather.apiBase + 'weather?q=' + locationName + '&units=metric')
+            .success(function(data) {
+              console.log(data);
+              $scope.weather.today = data;
+              $scope.weather.today.icon = getWeatherIcon(data.weather[0].description);
+              $scope.weather.loading = false;
+              checkDayNight($scope.weather.timeNow, $scope.weather.today.sys.sunrise, $scope.weather.today.sys.sunset);
+            })
+            .error(function(data) {
+              //console.log(data);
+              $scope.weather.error = true;
+            });
         };
         // Get Weather Forecast from OpenWeather API
         var getForecast = function(locationName) {
-          $http.get($scope.weather.apiBase + 'forecast/daily?q=' + locationName + '&units=metric').success(function(data) {
-            console.log(data);
-            $scope.weather.forecast = [];
-            angular.forEach(data.list, function(key, value) {
-              key.icon = getWeatherIcon(key.weather[0].description);
-              this.push(key);
-            }, $scope.weather.forecast);
-          });
+          $http.get($scope.weather.apiBase + 'forecast/daily?q=' + locationName + '&units=metric')
+            .success(function(data) {
+              console.log(data);
+              $scope.weather.forecast = [];
+              angular.forEach(data.list, function(key, value) {
+                key.icon = getWeatherIcon(key.weather[0].description);
+                this.push(key);
+              }, $scope.weather.forecast);
+            })
+            .error(function(data) {
+              //console.log(data);
+              $scope.weather.error = true;
+            });
         };
         // Refresh function
         $scope.refreshWeather = function() {
