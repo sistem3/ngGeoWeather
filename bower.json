@@ -1,6 +1,6 @@
 {
   "name": "ng-geo-weather",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
     "angular": ">=1.2.*",
     "json3": "~3.3.1",
@@ -17,11 +17,12 @@
   "authors": [
     "Ben Burton <sistematic3@yahoo.co.uk>"
   ],
-  "description": "Angular JS for displaying local weather",
+  "description": "Angular JS Directive for displaying local weather",
   "main": [
     "./dist/geoWeatherDirective.directive.js",
-    "./dist/templates.js",
+    "./dist/geoWeatherDirectiveTemplate.js",
     "./dist/geoWeatherDirective.css",
+    "./dist/geoWeatherDirective.css.map",
     "./dist/fonts/*"
   ],
   "keywords": [

@@ -1,8 +1,13 @@
 {
   "name":"ngGeoWeather",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "devDependencies": {
     "grunt": "~0.4.4",
-    "grunt-html2js": "^0.2.7"
+    "grunt-html2js": "^0.2.7",
+    "grunt-contrib-cssmin":         "*",
+    "grunt-contrib-qunit":         "*",
+    "grunt-contrib-jshint":         "*",
+    "grunt-contrib-uglify":         "*",
+    "matchdep":                     "*"
   }
 }
