@@ -36,35 +36,24 @@ angular.module('sistem3.ng-geo-weather', ['templates-main'])
             //console.log(data);
             $scope.weather.location = data.results[0].address_components[3].long_name;
             getWeather($scope.weather.location);
-            if (attrs.forecastHide === "true") {
-              getForecast($scope.weather.location);
-            }
           });
         };
         // Get Weather from Yahoo
         var getWeather = function(locationName) {
           $scope.weather.loading = true;
-          $http.get('http://api.openweathermap.org/data/2.5/weather?q=' + locationName + '&units=metric').success(function(data) {
-            console.log(data);
-            $scope.weather.today = data;
-            $scope.weather.loading = false;
-            /*$scope.weather.sunrise = data.query.results.channel.astronomy.sunrise;
+          $scope.weather.forecast = [];
+          $http.get('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + locationName + '") and u="c"&format=json').success(function(data) {
+            //console.log(data.query.results.channel);
+            $scope.weather.sunrise = data.query.results.channel.astronomy.sunrise;
             $scope.weather.sunset = data.query.results.channel.astronomy.sunset;
             $scope.weather.atmosphere = data.query.results.channel.atmosphere;
             $scope.weather.wind = data.query.results.channel.wind;
             checkDayNight($scope.weather.timeNow, $scope.weather.sunrise, $scope.weather.sunset);
-            $scope.weather.loading = false;*/
-          });
-        };
-
-        var getForecast = function(locationName) {
-          $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=' + locationName + '&units=metric').success(function(data) {
-            console.log(data);
-            $scope.weather.forecast = [];
             angular.forEach(data.query.results.channel.item.forecast, function(key, value) {
               key.icon = getWeatherIcon(key.text);
               this.push(key);
             }, $scope.weather.forecast);
+            $scope.weather.loading = false;
           });
         };
 
