@@ -14,7 +14,7 @@
         </div>
         <div ng-if="!weather.loading" class="container geoWeather__content">
             <div class="col-md-12">
-                <h2><span ng-bind="weather.today.weather[0].main"></span> <span ng-bind-html="weather.today.icon"></span></h2>
+                <h2><span ng-bind="weather.today.weather[0].description"></span> <span ng-bind-html="weather.today.icon"></span> - <span ng-bind="weather.today.main.temp"></span>&deg;</h2>
                 <h3><i class="fa fa-angle-up"></i> High: <span ng-bind="weather.today.main.temp_max"></span>&deg; | <i class="fa fa-angle-down"></i> Low: <span ng-bind="weather.today.main.temp_min"></span>&deg;</h3>
             </div>
             <section class="col-md-4">
@@ -35,9 +35,9 @@
             <section class="col-md-12 geoWeather__forecast" ng-if="!weather.foreCastHide">
                 <h3 ng-click="foreCollapse = !foreCollapse"><i class="fa fa-calendar"></i> Forecast <span><i class="fa" ng-class="foreCollapse ? 'fa-chevron-up' : 'fa-chevron-down'"></i></span></h3>
                 <ul class="list-unstyled" ng-show="foreCollapse">
-                    <li ng-repeat="items in weather.forecast" ng-show="!$first" class="col-md-2">
+                    <li ng-repeat="items in weather.forecast" ng-show="!$first" class="col-md-4">
                         <h3><span ng-bind="items.dt * 1000 | date: 'EEE - dd MMM'"></span></h3>
-                        <h4><span ng-bind="items.weather[0].main"></span> <span ng-bind-html="items.icon"></span></h4>
+                        <h4><span ng-bind="items.weather[0].description"></span> <span ng-bind-html="items.icon"></span></h4>
                         <h5><i class="fa fa-angle-up"></i> High: <span ng-bind="items.temp.max"></span>&deg;</h5>
                         <h5><i class="fa fa-angle-down"></i> Low: <span ng-bind="items.temp.min"></span>&deg;</h5>
                     </li>
