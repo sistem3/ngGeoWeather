@@ -18,7 +18,7 @@ angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", functi
     "        </div>\n" +
     "        <div ng-if=\"!weather.loading\" class=\"container geoWeather__content\">\n" +
     "            <div class=\"col-md-12\">\n" +
-    "                <h2><span ng-bind=\"weather.today.weather[0].main\"></span> <span ng-bind-html=\"weather.today.icon\"></span></h2>\n" +
+    "                <h2><span ng-bind=\"weather.today.weather[0].description\"></span> <span ng-bind-html=\"weather.today.icon\"></span> - <span ng-bind=\"weather.today.main.temp\"></span>&deg;</h2>\n" +
     "                <h3><i class=\"fa fa-angle-up\"></i> High: <span ng-bind=\"weather.today.main.temp_max\"></span>&deg; | <i class=\"fa fa-angle-down\"></i> Low: <span ng-bind=\"weather.today.main.temp_min\"></span>&deg;</h3>\n" +
     "            </div>\n" +
     "            <section class=\"col-md-4\">\n" +
@@ -39,9 +39,9 @@ angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", functi
     "            <section class=\"col-md-12 geoWeather__forecast\" ng-if=\"!weather.foreCastHide\">\n" +
     "                <h3 ng-click=\"foreCollapse = !foreCollapse\"><i class=\"fa fa-calendar\"></i> Forecast <span><i class=\"fa\" ng-class=\"foreCollapse ? 'fa-chevron-up' : 'fa-chevron-down'\"></i></span></h3>\n" +
     "                <ul class=\"list-unstyled\" ng-show=\"foreCollapse\">\n" +
-    "                    <li ng-repeat=\"items in weather.forecast\" ng-show=\"!$first\" class=\"col-md-2\">\n" +
+    "                    <li ng-repeat=\"items in weather.forecast\" ng-show=\"!$first\" class=\"col-md-4\">\n" +
     "                        <h3><span ng-bind=\"items.dt * 1000 | date: 'EEE - dd MMM'\"></span></h3>\n" +
-    "                        <h4><span ng-bind=\"items.weather[0].main\"></span> <span ng-bind-html=\"items.icon\"></span></h4>\n" +
+    "                        <h4><span ng-bind=\"items.weather[0].description\"></span> <span ng-bind-html=\"items.icon\"></span></h4>\n" +
     "                        <h5><i class=\"fa fa-angle-up\"></i> High: <span ng-bind=\"items.temp.max\"></span>&deg;</h5>\n" +
     "                        <h5><i class=\"fa fa-angle-down\"></i> Low: <span ng-bind=\"items.temp.min\"></span>&deg;</h5>\n" +
     "                    </li>\n" +
