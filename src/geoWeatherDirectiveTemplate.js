@@ -1,4 +1,4 @@
-angular.module('templates-main', ['geoWeatherDirective.tpl.html']);
+angular.module('geo-weather-template', ['geoWeatherDirective.tpl.html']);
 
 angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("geoWeatherDirective.tpl.html",

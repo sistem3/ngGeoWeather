@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sistem3.ng-geo-weather', ['templates-main'])
+angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
   .directive('geoWeatherDirective', ['$http', '$filter', function ($http, $filter) {
     return {
       templateUrl: 'geoWeatherDirective.tpl.html',
