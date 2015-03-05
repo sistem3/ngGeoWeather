@@ -18,7 +18,7 @@ angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", functi
     "        </div>\n" +
     "        <div ng-if=\"!weather.loading\" class=\"container geoWeather__content\">\n" +
     "            <div class=\"col-md-12\">\n" +
-    "                <h2><span ng-bind=\"weather.today.weather[0].description\"></span> <span ng-bind-html=\"weather.today.icon\"></span> - <span ng-bind=\"weather.today.main.temp\"></span>&deg;</h2>\n" +
+    "                <h2><span ng-bind=\"weather.today.weather[0].description\"></span> <span ng-bind-html=\"weather.today.icon\"></span> <span ng-bind=\"weather.today.main.temp | number: 2\"></span>&deg;</h2>\n" +
     "                <h3><i class=\"fa fa-angle-up\"></i> High: <span ng-bind=\"weather.today.main.temp_max\"></span>&deg; | <i class=\"fa fa-angle-down\"></i> Low: <span ng-bind=\"weather.today.main.temp_min\"></span>&deg;</h3>\n" +
     "            </div>\n" +
     "            <section class=\"col-md-4\">\n" +
@@ -27,7 +27,7 @@ angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", functi
     "                <p><i class=\"wi wi-sunrise\"></i> Sunrise: <span ng-bind=\"weather.today.sys.sunrise * 1000 | date: 'HH:mm a'\"></span> | <i class=\"wi wi-sunset\"></i> Sunset: <span ng-bind=\"weather.today.sys.sunset * 1000 | date: 'HH:mm a'\"></span></p>\n" +
     "            </section>\n" +
     "            <section class=\"hidden-xs col-md-4\">\n" +
-    "                <h4>Wind direction: <span ng-bind=\"weather.today.wind.deg\"></span> <i class=\"wi wi-wind-default _{{weather.today.wind.deg}}-deg\"></i></h4>\n" +
+    "                <h4>Wind direction: <span ng-bind=\"weather.today.wind.deg  | number: 0\"></span> <i class=\"wi wi-wind-default _{{weather.today.wind.deg | number: 0}}-deg\"></i></h4>\n" +
     "                <h5>Wind speed: <span ng-bind=\"weather.today.wind.speed\"></span></h5>\n" +
     "                <p>Wind chill: <span ng-bind=\"weather.today.wind.gust\"></span></p>\n" +
     "            </section>\n" +
@@ -42,8 +42,8 @@ angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", functi
     "                    <li ng-repeat=\"items in weather.forecast\" ng-show=\"!$first\" class=\"col-md-4\">\n" +
     "                        <h3><span ng-bind=\"items.dt * 1000 | date: 'EEE - dd MMM'\"></span></h3>\n" +
     "                        <h4><span ng-bind=\"items.weather[0].description\"></span> <span ng-bind-html=\"items.icon\"></span></h4>\n" +
-    "                        <h5><i class=\"fa fa-angle-up\"></i> High: <span ng-bind=\"items.temp.max\"></span>&deg;</h5>\n" +
-    "                        <h5><i class=\"fa fa-angle-down\"></i> Low: <span ng-bind=\"items.temp.min\"></span>&deg;</h5>\n" +
+    "                        <h5><i class=\"fa fa-angle-up\"></i> High: <span ng-bind=\"items.temp.max | number: 2\"></span>&deg;</h5>\n" +
+    "                        <h5><i class=\"fa fa-angle-down\"></i> Low: <span ng-bind=\"items.temp.min | number: 2\"></span>&deg;</h5>\n" +
     "                    </li>\n" +
     "                </ul>\n" +
     "            </section>\n" +

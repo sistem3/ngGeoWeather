@@ -14,7 +14,7 @@
         </div>
         <div ng-if="!weather.loading" class="container geoWeather__content">
             <div class="col-md-12">
-                <h2><span ng-bind="weather.today.weather[0].description"></span> <span ng-bind-html="weather.today.icon"></span> - <span ng-bind="weather.today.main.temp"></span>&deg;</h2>
+                <h2><span ng-bind="weather.today.weather[0].description"></span> <span ng-bind-html="weather.today.icon"></span> <span ng-bind="weather.today.main.temp | number: 2"></span>&deg;</h2>
                 <h3><i class="fa fa-angle-up"></i> High: <span ng-bind="weather.today.main.temp_max"></span>&deg; | <i class="fa fa-angle-down"></i> Low: <span ng-bind="weather.today.main.temp_min"></span>&deg;</h3>
             </div>
             <section class="col-md-4">
@@ -23,7 +23,7 @@
                 <p><i class="wi wi-sunrise"></i> Sunrise: <span ng-bind="weather.today.sys.sunrise * 1000 | date: 'HH:mm a'"></span> | <i class="wi wi-sunset"></i> Sunset: <span ng-bind="weather.today.sys.sunset * 1000 | date: 'HH:mm a'"></span></p>
             </section>
             <section class="hidden-xs col-md-4">
-                <h4>Wind direction: <span ng-bind="weather.today.wind.deg"></span> <i class="wi wi-wind-default _{{weather.today.wind.deg}}-deg"></i></h4>
+                <h4>Wind direction: <span ng-bind="weather.today.wind.deg  | number: 0"></span> <i class="wi wi-wind-default _{{weather.today.wind.deg | number: 0}}-deg"></i></h4>
                 <h5>Wind speed: <span ng-bind="weather.today.wind.speed"></span></h5>
                 <p>Wind chill: <span ng-bind="weather.today.wind.gust"></span></p>
             </section>
@@ -38,8 +38,8 @@
                     <li ng-repeat="items in weather.forecast" ng-show="!$first" class="col-md-4">
                         <h3><span ng-bind="items.dt * 1000 | date: 'EEE - dd MMM'"></span></h3>
                         <h4><span ng-bind="items.weather[0].description"></span> <span ng-bind-html="items.icon"></span></h4>
-                        <h5><i class="fa fa-angle-up"></i> High: <span ng-bind="items.temp.max"></span>&deg;</h5>
-                        <h5><i class="fa fa-angle-down"></i> Low: <span ng-bind="items.temp.min"></span>&deg;</h5>
+                        <h5><i class="fa fa-angle-up"></i> High: <span ng-bind="items.temp.max | number: 2"></span>&deg;</h5>
+                        <h5><i class="fa fa-angle-down"></i> Low: <span ng-bind="items.temp.min | number: 2"></span>&deg;</h5>
                     </li>
                 </ul>
             </section>
