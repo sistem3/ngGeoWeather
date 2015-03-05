@@ -1,7 +1,7 @@
 ngGeoWeather
 ============
 
-**Version:** 0.0.6
+**Version:** 0.0.7
 
 **Description:** This is an Angular JS Directive for displaying local weather
 based on geolocation. The geolocation is done through Google Maps API and the
