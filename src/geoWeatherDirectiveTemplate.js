@@ -19,7 +19,7 @@ angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", functi
     "        <div ng-if=\"!weather.loading\" class=\"container geoWeather__content\">\n" +
     "            <div class=\"col-md-12\">\n" +
     "                <h2><span ng-bind=\"weather.today.weather[0].description\"></span> <span ng-bind-html=\"weather.today.icon\"></span> <span ng-bind=\"weather.today.main.temp | number: 2\"></span>&deg;</h2>\n" +
-    "                <h3><i class=\"fa fa-angle-up\"></i> High: <span ng-bind=\"weather.today.main.temp_max\"></span>&deg; | <i class=\"fa fa-angle-down\"></i> Low: <span ng-bind=\"weather.today.main.temp_min\"></span>&deg;</h3>\n" +
+    "                <h3><i class=\"fa fa-angle-up\"></i> High: <span ng-bind=\"weather.today.main.temp_max | number: 2\"></span>&deg; | <i class=\"fa fa-angle-down\"></i> Low: <span ng-bind=\"weather.today.main.temp_min | number: 2\"></span>&deg;</h3>\n" +
     "            </div>\n" +
     "            <section class=\"col-md-4\">\n" +
     "                <h4>Today - <span ng-bind=\"weather.todaysDate | date: mediumDate\"></span></h4>\n" +
@@ -28,13 +28,13 @@ angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", functi
     "            </section>\n" +
     "            <section class=\"hidden-xs col-md-4\">\n" +
     "                <h4>Wind direction: <span ng-bind=\"weather.today.wind.deg  | number: 0\"></span> <i class=\"wi wi-wind-default _{{weather.today.wind.deg | number: 0}}-deg\"></i></h4>\n" +
-    "                <h5>Wind speed: <span ng-bind=\"weather.today.wind.speed\"></span></h5>\n" +
-    "                <p>Wind chill: <span ng-bind=\"weather.today.wind.gust\"></span></p>\n" +
+    "                <h5>Wind speed: <span ng-bind=\"weather.today.wind.speed | number: 2\"></span></h5>\n" +
+    "                <!--<p>Wind chill: <span ng-bind=\"weather.today.wind.gust | number: 2\"></span></p>-->\n" +
     "            </section>\n" +
     "            <section class=\"hidden-xs col-md-4\">\n" +
     "                <!--<h4>Visibility: <span ng-bind=\"weather.atmosphere.visibility\"></span></h4>-->\n" +
-    "                <h5>Humidity: <span ng-bind=\"weather.today.main.humidity\"></span></h5>\n" +
-    "                <p>Pressure: <span ng-bind=\"weather.today.main.pressure\"></span></p>\n" +
+    "                <h5>Humidity: <span ng-bind=\"weather.today.main.humidity | number: 2\"></span></h5>\n" +
+    "                <p>Pressure: <span ng-bind=\"weather.today.main.pressure | number: 2\"></span></p>\n" +
     "            </section>\n" +
     "            <section class=\"col-md-12 geoWeather__forecast\" ng-if=\"!weather.foreCastHide\">\n" +
     "                <h3 ng-click=\"foreCollapse = !foreCollapse\"><i class=\"fa fa-calendar\"></i> Forecast <span><i class=\"fa\" ng-class=\"foreCollapse ? 'fa-chevron-up' : 'fa-chevron-down'\"></i></span></h3>\n" +

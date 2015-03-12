@@ -88,9 +88,9 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
           var sunSetTime = $filter('date')(sunset * 1000, 'HH:mm');
           console.log("Time now = " + timeNow + " Sunrise is = " + sunRiseTime + " sunset is = " + sunSetTime);
           if (timeNow > sunSetTime && timeNow < sunRiseTime) {
-            $scope.weather.background = 'defaultBg';
-          } else {
             $scope.weather.background = 'nightBg';
+          } else {
+            $scope.weather.background = 'defaultBg';
           }
         };
         // Weather Icon checker (based on OpenWeatherApi statuses
