@@ -112,8 +112,8 @@
  */
 @font-face {
   font-family: 'weathericons';
-  src: url("fonts/weathericons-regular-webfont.eot");
-  src: url("fonts/weathericons-regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/weathericons-regular-webfont.woff") format("woff"), url("fonts/weathericons-regular-webfont.ttf") format("truetype"), url("fonts/weathericons-regular-webfont.svg#weathericons-regular-webfontRg") format("svg");
+  src: url("/bower_components/ng-geo-weather/dist/fonts/weathericons-regular-webfont.eot");
+  src: url("/bower_components/ng-geo-weather/dist/fonts/weathericons-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/bower_components/ng-geo-weather/dist/fonts/weathericons-regular-webfont.woff") format("woff"), url("/bower_components/ng-geo-weather/dist/fonts/weathericons-regular-webfont.ttf") format("truetype"), url("/bower_components/ng-geo-weather/dist/fonts/weathericons-regular-webfont.svg#weathericons-regular-webfontRg") format("svg");
   font-weight: normal;
   font-style: normal; }
 .wi {

@@ -8,10 +8,15 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
       link: function ($scope, element, attrs) {
         //console.log('Add geo Weather Directive');
         $scope.weather = {};
+        $scope.weather.forecast = {};
         $scope.weather.loading = true;
         $scope.weather.loadingMessage = 'Loading your weather...';
         $scope.weather.error = false;
-        $scope.weather.errorMessage = 'There seems to be a problem fetching your data';
+        $scope.weather.errorMessage = 'There seems to be a problem fetching your weather';
+        $scope.weather.forecast.loading = true;
+        $scope.weather.forecast.loadingMessage = 'Loading your forecast...';
+        $scope.weather.forecast.error = false;
+        $scope.weather.forecast.errorMessage = 'There seems to be a problem fetching your forecast';
         $scope.weather.background = 'defaultBg';
         $scope.weather.apiBase = 'http://api.openweathermap.org/data/2.5/';
         $scope.weather.todaysDate = new Date();
@@ -27,6 +32,8 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
             getLocation(position);
           });
         } else {
+          $scope.weather.error = true;
+          $scope.weather.loading = false;
           //console.log("GeoLocation Not Available");
         }
         // Get location from Google Maps
@@ -44,6 +51,7 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
             .error(function(data) {
               //console.log(data);
               $scope.weather.error = true;
+              $scope.weather.loading = false;
             });
         };
         // Get Today's Weather from OpenWeather API
@@ -51,7 +59,8 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
           $scope.weather.loading = true;
           $http.get($scope.weather.apiBase + 'weather?q=' + locationName + '&units=metric')
             .success(function(data) {
-              console.log(data);
+              //console.log(data);
+              $scope.weather.error = false;
               $scope.weather.today = data;
               $scope.weather.today.icon = getWeatherIcon(data.weather[0].description);
               $scope.weather.loading = false;
@@ -60,22 +69,26 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
             .error(function(data) {
               //console.log(data);
               $scope.weather.error = true;
+              $scope.weather.loading = false;
             });
         };
         // Get Weather Forecast from OpenWeather API
         var getForecast = function(locationName) {
           $http.get($scope.weather.apiBase + 'forecast/daily?q=' + locationName + '&units=metric')
             .success(function(data) {
-              console.log(data);
-              $scope.weather.forecast = [];
+              //console.log(data);
+              $scope.weather.forecast.error = false;
+              $scope.weather.forecast.days = [];
               angular.forEach(data.list, function(key, value) {
                 key.icon = getWeatherIcon(key.weather[0].description);
                 this.push(key);
-              }, $scope.weather.forecast);
+              }, $scope.weather.forecast.days);
+              $scope.weather.forecast.loading = false;
             })
             .error(function(data) {
               //console.log(data);
-              $scope.weather.error = true;
+              $scope.weather.forecast.error = true;
+              $scope.weather.forecast.loading = false;
             });
         };
         // Refresh function
@@ -86,8 +99,10 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
         var checkDayNight = function(timeNow, sunrise, sunset) {
           var sunRiseTime = $filter('date')(sunrise * 1000, 'HH:mm');
           var sunSetTime = $filter('date')(sunset * 1000, 'HH:mm');
-          console.log("Time now = " + timeNow + " Sunrise is = " + sunRiseTime + " sunset is = " + sunSetTime);
-          if (timeNow > sunSetTime && timeNow < sunRiseTime) {
+          //console.log("Time now = " + timeNow.slice(0,2) + " Sunrise is = " + sunRiseTime.slice(0,2) + " sunset is = " + sunSetTime.slice(0,2));
+          if (timeNow.slice(0,2) > sunSetTime.slice(0,2)) {
+            $scope.weather.background = 'nightBg';
+          } else if (timeNow.slice(0,2) < sunRiseTime.slice(0,2)) {
             $scope.weather.background = 'nightBg';
           } else {
             $scope.weather.background = 'defaultBg';
