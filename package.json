@@ -1,6 +1,6 @@
 {
-  "name":"ngGeoWeather",
-  "version": "0.0.9",
+  "name":"osbGeoWeatherNg",
+  "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-html2js": "^0.2.7",

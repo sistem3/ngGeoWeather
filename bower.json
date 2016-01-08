@@ -1,6 +1,6 @@
 {
-  "name": "ng-geo-weather",
-  "version": "0.0.9",
+  "name": "osb-geo-weather-ng",
+  "version": "0.1.0",
   "dependencies": {
     "angular": ">=1.2.*",
     "json3": "~3.3.1",
