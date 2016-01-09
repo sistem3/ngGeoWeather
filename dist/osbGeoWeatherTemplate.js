@@ -1,7 +1,7 @@
-angular.module('geo-weather-template', ['geoWeatherDirective.tpl.html']);
+angular.module('osb-geo-weather-template', ['osbGeoWeather.tpl.html']);
 
-angular.module("geoWeatherDirective.tpl.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("geoWeatherDirective.tpl.html",
+angular.module("osbGeoWeather.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("osbGeoWeather.tpl.html",
     "<div class=\"geoWeather container\">\n" +
     "    <div class=\"{{weather.background}}\">\n" +
     "        <div class=\"container\">\n" +
