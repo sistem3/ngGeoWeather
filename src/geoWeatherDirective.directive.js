@@ -19,6 +19,7 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
         $scope.weather.forecast.errorMessage = 'There seems to be a problem fetching your forecast';
         $scope.weather.background = 'defaultBg';
         $scope.weather.apiBase = 'http://api.openweathermap.org/data/2.5/';
+        $scope.weather.apiKey = '893dd0afe360cf42975f84a9b97cd4ec';
         $scope.weather.todaysDate = new Date();
         $scope.weather.timeNow = $filter('date')($scope.weather.todaysDate, 'HH:mm');
         // Check for forecast hide attribute
@@ -57,7 +58,7 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
         // Get Today's Weather from OpenWeather API
         var getWeather = function(locationName) {
           $scope.weather.loading = true;
-          $http.get($scope.weather.apiBase + 'weather?q=' + locationName + '&units=metric')
+          $http.get($scope.weather.apiBase + 'weather?q=' + locationName + '&units=metric&APPID=' + $scope.weather.apiKey)
             .success(function(data) {
               //console.log(data);
               $scope.weather.error = false;
@@ -74,7 +75,7 @@ angular.module('sistem3.ng-geo-weather', ['geo-weather-template'])
         };
         // Get Weather Forecast from OpenWeather API
         var getForecast = function(locationName) {
-          $http.get($scope.weather.apiBase + 'forecast/daily?q=' + locationName + '&units=metric')
+          $http.get($scope.weather.apiBase + 'forecast/daily?q=' + locationName + '&units=metric&APPID=' + $scope.weather.apiKey)
             .success(function(data) {
               //console.log(data);
               $scope.weather.forecast.error = false;
