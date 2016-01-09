@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="osbGeoWeatherDemo">
 <head>
     <title>OSB Geo Weather</title>
 
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="dist/geoWeatherDirective.directive.js"></script>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="dist/geoWeatherDirective.css">
@@ -20,7 +19,19 @@
 </head>
 
 <body>
-    <osb-geo-weather show-forecast="true"></osb-geo-weather>
+    <div ng-view>
+        <osb-geo-weather show-forecast="true"></osb-geo-weather>
+    </div>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="src/osbGeoWeather.directive.js"></script>
+    <script src="src/osbGeoWeatherTemplate.js"></script>
+    <!--<script src="dist/geoWeatherDirective.directive.js"></script>
+    <script src="dist/geoWeatherDirectiveTemplate.js"></script>-->
+    <script>
+        'use strict';
+        angular.module('osbGeoWeatherDemo', ['sistem3.osb-geo-weather']);
+    </script>
 </body>
 
 </html>
