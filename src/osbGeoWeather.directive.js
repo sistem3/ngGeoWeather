@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('sistem3.osb-geo-weather', ['geo-weather-template'])
+angular.module('sistem3.osb-geo-weather', ['osb-geo-weather-template'])
   .directive('osbGeoWeather', ['$http', '$filter', function ($http, $filter) {
     return {
-      templateUrl: 'geoWeatherDirective.tpl.html',
+      templateUrl: 'osbGeoWeather.tpl.html',
       restrict: 'EA',
       link: function ($scope, element, attrs) {
         //console.log('Add geo Weather Directive');
