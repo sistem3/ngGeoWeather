@@ -4,7 +4,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     html2js: {
       options: {
-        // custom options, see below
+        module: 'osb-geo-weather-template'
       },
       main: {
         src: ['src/**/*.tpl.html'],
