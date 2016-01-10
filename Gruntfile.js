@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = function (grunt) {
-
   grunt.initConfig({
     html2js: {
       options: {
@@ -11,11 +10,38 @@ module.exports = function (grunt) {
         src: ['src/**/*.tpl.html'],
         dest: 'src/osbGeoWeatherTemplate.js'
       }
+    },
+    sass: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+          'src/css/osbGeoWeather.css': 'src/scss/osbGeoWeather.scss'
+        }
+      }
+    },
+    watch: {
+      templates: {
+        files: ['src/**/*.html'],
+        tasks: ['html2js'],
+        options: {
+          spawn: false
+        }
+      },
+      styles: {
+        files: ['src/scss/**/*.scss'],
+        tasks: ['sass'],
+        options: {
+          spawn: false
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-serve');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['serve']);
