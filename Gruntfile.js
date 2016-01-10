@@ -11,6 +11,12 @@ module.exports = function (grunt) {
         dest: 'src/osbGeoWeatherTemplate.js'
       }
     },
+    concat: {
+      build: {
+        src: ['src/osbGeoWeatherTemplate.js', 'src/osbGeoWeather.directive.js'],
+        dest: 'dist/osbGeoWeather.js'
+      }
+    },
     sass: {
       options: {
         sourceMap: true
@@ -42,8 +48,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-serve');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['serve']);
   grunt.registerTask('template', ['html2js']);
+  grunt.registerTask('build', ['grunt-sass', 'grunt-html2js', 'concat']);
 };

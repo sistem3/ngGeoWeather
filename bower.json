@@ -1,6 +1,6 @@
 {
   "name": "osb-geo-weather-ng",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "angular": ">=1.2.*",
     "angular-sanitize": "~1.4.8",

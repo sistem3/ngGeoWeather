@@ -1,16 +1,17 @@
 {
-  "name":"osbGeoWeatherNg",
-  "version": "0.1.0",
+  "name": "osbGeoWeatherNg",
+  "version": "0.1.1",
   "devDependencies": {
     "grunt": "~0.4.4",
-    "grunt-serve": "^0.1.6",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-qunit": "*",
+    "grunt-contrib-uglify": "*",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-sass": "^1.1.0",
     "grunt-html2js": "^0.2.7",
-    "grunt-contrib-cssmin":         "*",
-    "grunt-contrib-qunit":         "*",
-    "grunt-contrib-jshint":         "*",
-    "grunt-contrib-uglify":         "*",
-    "matchdep":                     "*"
+    "grunt-sass": "^1.1.0",
+    "grunt-serve": "^0.1.6",
+    "matchdep": "*"
   }
 }
