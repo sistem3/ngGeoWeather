@@ -4,3 +4,5 @@
 @import 'modules/weather-loader';
 @import 'modules/weather-content';
 @import 'modules/weather-forecast';
+$wi-path: 'dist/font';
+@import '../../bower_components/weather-icons/sass/weather-icons';
