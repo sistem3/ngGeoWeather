@@ -13,7 +13,7 @@ module.exports = function (grunt) {
     },
     concat: {
       build: {
-        src: ['src/osbGeoWeatherTemplate.js', 'src/osbGeoWeather.directive.js'],
+        src: ['src/osbGeoWeather.directive.tpl.js', 'src/osbGeoWeather.directive.js'],
         dest: 'dist/osbGeoWeather.js'
       }
     },
