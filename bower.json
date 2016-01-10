@@ -15,11 +15,9 @@
   ],
   "description": "Angular JS Directive for displaying local weather",
   "main": [
-    "./dist/osbGeoWeather.directive.js",
-    "./dist/osbGeoWeatherTemplate.js",
+    "./dist/osbGeoWeather.js",
     "./dist/osbGeoWeather.css",
-    "./dist/osbGeoWeather.css.map",
-    "./dist/fonts/*"
+    "./dist/font/*"
   ],
   "keywords": [
     "angularJS",
