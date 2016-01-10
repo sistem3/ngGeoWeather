@@ -1,0 +1,44 @@
+.osb-geo-weather-holder {
+  .background {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .defaultBg {
+    background: $cerulean; /* Old browsers */
+    background: -moz-linear-gradient(top, $cerulean 0%, $deep-cerulean 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $cerulean), color-stop(100%, $deep-cerulean)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $cerulean 0%, $deep-cerulean 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $cerulean 0%, $deep-cerulean 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $cerulean 0%, $deep-cerulean 100%); /* IE10+ */
+    background: linear-gradient(to bottom, $cerulean 0%, $deep-cerulean 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$cerulean', endColorstr='$deep-cerulean', GradientType=0); /* IE6-9 */
+  }
+
+  .nightBg {
+    background: $black-russian; /* Old browsers */
+    background: -moz-linear-gradient(top, $black-russian 0%, $prussian-blue 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $black-russian), color-stop(100%, $prussian-blue)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $black-russian 0%, $prussian-blue 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $black-russian 0%, $prussian-blue 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $black-russian 0%, $prussian-blue 100%); /* IE10+ */
+    background: linear-gradient(to bottom, $black-russian 0%, $prussian-blue 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$black-russian', endColorstr='$prussian-blue', GradientType=0); /* IE6-9 */
+  }
+
+  .rainyBg {
+    background: #b5bdc8; /* Old browsers */
+    background: -moz-linear-gradient(top, $cadet-blue 0%, $oslo-gray 36%, $outer-space 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $cadet-blue), color-stop(36%, $oslo-gray), color-stop(100%, $outer-space)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $cadet-blue 0%, $oslo-gray 36%, $outer-space 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $cadet-blue 0%, $oslo-gray 36%, $outer-space 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $cadet-blue 0%, $oslo-gray 36%, $outer-space 100%); /* IE10+ */
+    background: linear-gradient(to bottom, $cadet-blue 0%, $oslo-gray 36%, $outer-space 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$cadet-blue', endColorstr='$outer-space', GradientType=0); /* IE6-9 */
+  }
+
+}
