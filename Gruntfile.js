@@ -8,7 +8,7 @@ module.exports = function (grunt) {
       },
       main: {
         src: ['src/**/*.tpl.html'],
-        dest: 'src/osbGeoWeatherTemplate.js'
+        dest: 'src/osbGeoWeather.directive.tpl.js'
       }
     },
     concat: {
