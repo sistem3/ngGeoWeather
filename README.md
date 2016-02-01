@@ -1,7 +1,7 @@
 osbGeoWeather (Ng 1.4)
 ============
 
-**Version:** 0.1.1
+**Version:** 0.1.2
 
 **Description:** This is an Angular JS (1.4) Directive for displaying local weather
 based on geolocation. The geolocation is done through Google Maps API and the
