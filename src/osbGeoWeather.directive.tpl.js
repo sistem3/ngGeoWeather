@@ -7,7 +7,7 @@ angular.module("osbGeoWeather.tpl.html", []).run(["$templateCache", function($te
     "        <div class=\"container\">\n" +
     "            <h1 class=\"col-md-12\">Local Weather <span ng-click=\"refreshWeather()\"><i class=\"fa fa-refresh\"></i></span></h1>\n" +
     "        </div>\n" +
-    "        <div ng-if=\"weather.loading\" class=\"geoWeather__loader\">\n" +
+    "        <div ng-if=\"weather.loading\" class=\"geoWeather__loader text-center\">\n" +
     "            <div>\n" +
     "                <i class=\"fa fa-spinner fa-spin\"></i>\n" +
     "            </div>\n" +
