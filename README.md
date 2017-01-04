@@ -19,3 +19,6 @@ utilises [Weather Icons][2].
 -   Font-Awesome (^ 4.5)
 
 -   Bootstrap (^ 3)
+
+**Notice:**
+Further development on this project is on hold whilst I work on the [Angular 2 version](https://github.com/sistem3/osbGeoWeatherNg2).
